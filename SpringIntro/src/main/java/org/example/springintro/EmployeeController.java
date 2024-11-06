@@ -1,62 +1,40 @@
 package org.example.springintro;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/employees")
 public class EmployeeController {
 
-    private final EmployeeManagementService employeeManagementService;
+    private final EmployeeService employeeService;
 
     @Autowired
-    public EmployeeController(EmployeeManagementService employeeManagementService) {
-        this.employeeManagementService = employeeManagementService;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
-    // 1. Wyświetl wszystkich użytkowników w formacie JSON
-    @GetMapping
-    public List<Person> getAllEmployees() {
-        return employeeManagementService.getEmployees();
+    // Endpoint do pobrania najważniejszych pracowników w formacie JSON
+    @GetMapping("/key-employees")
+    public Person[] getKeyEmployees() {
+        return employeeService.getKeyEmployees();
     }
 
-    // 2. Wyświetl konkretnego użytkownika w formacie JSON po ID
-    @GetMapping("/{id}")
-    public Person getEmployeeById(@PathVariable int id) {
-        return employeeManagementService.getEmployees().stream()
-                .filter(e -> e.getId() == id)
-                .findFirst()
-                .orElse(null);  // Jeśli nie znajdziemy użytkownika, zwróci null
+    // Endpoint do pobrania prezydenta w formacie JSON
+    @GetMapping("/employee/president")
+    public Person getPresident() {
+        return employeeService.getKeyEmployees()[0];  // Zwróć prezydenta
     }
 
-    // 3. Dodaj użytkownika do bazy użytkowników
-    @PostMapping
-    public String addEmployee(@RequestBody Person newEmployee) {
-        employeeManagementService.addEmployee(newEmployee);
-        return "Użytkownik został dodany!";
+    // Endpoint do pobrania wiceprezydenta w formacie JSON
+    @GetMapping("/employee/vice-president")
+    public Person getVicePresident() {
+        return employeeService.getKeyEmployees()[1];  // Zwróć wiceprezydenta
     }
 
-    // 4. Edytuj użytkownika w bazie użytkowników
-    @PutMapping("/{id}")
-    public String updateEmployee(@PathVariable int id, @RequestBody Person updatedEmployee) {
-        boolean updated = employeeManagementService.updateEmployee(id, updatedEmployee);
-        if (updated) {
-            return "Użytkownik zaktualizowany!";
-        } else {
-            return "Użytkownik o podanym ID nie istnieje!";
-        }
-    }
-
-    // 5. Usuń użytkownika z bazy użytkowników
-    @DeleteMapping("/{id}")
-    public String deleteEmployee(@PathVariable int id) {
-        boolean deleted = employeeManagementService.deleteEmployee(id);
-        if (deleted) {
-            return "Użytkownik usunięty!";
-        } else {
-            return "Użytkownik o podanym ID nie istnieje!";
-        }
+    // Endpoint do pobrania sekretarza w formacie JSON
+    @GetMapping("/employee/secretary")
+    public Person getSecretary() {
+        return employeeService.getKeyEmployees()[2];  // Zwróć sekretarza
     }
 }
