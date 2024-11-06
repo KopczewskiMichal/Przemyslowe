@@ -23,10 +23,12 @@ public class EmployeeService {
         this.secretary = secretary;
     }
 
-    public void displayKeyEmployees() {
-        System.out.println("President: " + president);
-        System.out.println("Vice President: " + vicePresident);
-        System.out.println("Secretary: " + secretary);
+    public String displayKeyEmployees() {
+        StringBuilder result = new StringBuilder();
+        result.append("President: ").append(president).append("\n");
+        result.append("Vice President: ").append(vicePresident).append("\n");
+        result.append("Secretary: ").append(secretary).append("\n");
+        return result.toString();
     }
 }
 
