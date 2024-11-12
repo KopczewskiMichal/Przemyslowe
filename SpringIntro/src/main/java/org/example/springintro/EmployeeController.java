@@ -14,27 +14,23 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    // Endpoint do pobrania najważniejszych pracowników w formacie JSON
     @GetMapping("/key-employees")
     public Person[] getKeyEmployees() {
         return employeeService.getKeyEmployees();
     }
 
-    // Endpoint do pobrania prezydenta w formacie JSON
     @GetMapping("/employee/president")
     public Person getPresident() {
-        return employeeService.getKeyEmployees()[0];  // Zwróć prezydenta
+        return employeeService.getKeyEmployees()[0];
     }
 
-    // Endpoint do pobrania wiceprezydenta w formacie JSON
     @GetMapping("/employee/vice-president")
     public Person getVicePresident() {
-        return employeeService.getKeyEmployees()[1];  // Zwróć wiceprezydenta
+        return employeeService.getKeyEmployees()[1];
     }
 
-    // Endpoint do pobrania sekretarza w formacie JSON
     @GetMapping("/employee/secretary")
     public Person getSecretary() {
-        return employeeService.getKeyEmployees()[2];  // Zwróć sekretarza
+        return employeeService.getKeyEmployees()[2];
     }
 }

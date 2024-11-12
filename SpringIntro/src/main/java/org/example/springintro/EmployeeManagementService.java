@@ -14,7 +14,6 @@ public class EmployeeManagementService {
     @Autowired
     private CsvReaderService csvReaderService;
 
-    // Zamiast @PostConstruct użyj CommandLineRunner w klasie głównej
     public List<Person> getEmployees() {
         return employees;
     }

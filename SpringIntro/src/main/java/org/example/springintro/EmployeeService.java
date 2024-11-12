@@ -20,7 +20,6 @@ public class EmployeeService {
         this.secretary = secretary;
     }
 
-    // Metoda do zwrócenia najważniejszych pracowników w formacie JSON
     public Person[] getKeyEmployees() {
         return new Person[] { president, vicePresident, secretary };
     }

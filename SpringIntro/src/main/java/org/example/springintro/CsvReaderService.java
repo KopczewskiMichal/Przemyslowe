@@ -21,7 +21,6 @@ public class CsvReaderService {
                     .map(line -> line.split(","))
                     .map(data -> new Person(data[0], data[1], data[2], data[3]))
                     .collect(Collectors.toList());
-            // Nadanie ID każdemu pracownikowi
             for (Person person : employees) {
                 person.setId(idCounter++);
             }
