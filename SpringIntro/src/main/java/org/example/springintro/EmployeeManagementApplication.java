@@ -23,6 +23,5 @@ public class EmployeeManagementApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         employeeManagementService.setEmployees(csvReaderService.readEmployeesFromCsv("src/main/resources/MOCK_DATA.csv"));
-        System.out.println("Pracownicy załadowani do systemu");
     }
 }
