@@ -1,0 +1,70 @@
+GET http://localhost:8080/hello
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-13T154834.404.json
+
+###
+
+GET http://localhost:8080/hello
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-13T154643.404.json
+
+###
+
+GET http://localhost:8080/employees
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-13T154632.404.json
+
+###
+
+GET http://localhost:8080/employees
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-13T145043.500.json
+
+###
+
+GET http://localhost:8080/employees
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-13T145026.500.json
+
+###
+
+GET http://localhost:8080
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-13T144135.500.json
+
+###
+
+GET http://localhost:8080
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-13T144129.500.json
+
+###
+
