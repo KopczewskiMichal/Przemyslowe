@@ -1,13 +1,12 @@
 package org.example.springintro;
 
 public class Person {
-    private int Id;  // ID będzie ustawiane przez setter
+    private int Id;
     private String firstName;
     private String lastName;
     private String email;
     private String company;
 
-    // Konstruktor bez ID
     public Person(String firstName, String lastName, String email, String company) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -15,12 +14,10 @@ public class Person {
         this.company = company;
     }
 
-    // Setter dla ID
     public void setId(int Id) {
         this.Id = Id;
     }
 
-    // Gettery i settery
     public int getId() { return Id; }
     public String getFirstName() { return firstName; }
     public void setFirstName(String firstName) { this.firstName = firstName; }

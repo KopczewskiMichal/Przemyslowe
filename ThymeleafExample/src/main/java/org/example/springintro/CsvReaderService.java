@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class CsvReaderService {
-
     public List<Person> readEmployeesFromCsv(String filePath) {
         List<Person> employees = new ArrayList<>();
         try (BufferedReader br = Files.newBufferedReader(Paths.get(filePath))) {
