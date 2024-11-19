@@ -40,11 +40,6 @@ public class EmployeeManagementService {
         return employees.removeIf(employee -> employee.getId() == id);
     }
 
-    public List<Person> filterByCompany(String company) {
-        return employees.stream()
-                .filter(employee -> employee.getCompany().equalsIgnoreCase(company))
-                .collect(Collectors.toList());
-    }
 
     public List<Person> sortByLastName() {
         return employees.stream()

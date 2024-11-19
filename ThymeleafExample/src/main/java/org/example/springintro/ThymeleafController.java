@@ -35,8 +35,10 @@ public class ThymeleafController {
                         String.valueOf(employee.getId()),
                         employee.getFirstName(),
                         employee.getLastName(),
-                        employee.getCompany(),
                         employee.getEmail(),
+                        String.valueOf(employee.getSalary()),
+                        employee.getCurrency(),
+                        employee.getCountry()
                 })
                 .toList();
 

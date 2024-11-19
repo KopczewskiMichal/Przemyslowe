@@ -18,7 +18,7 @@ public class CsvReaderService {
             employees = br.lines()
                     .skip(1)
                     .map(line -> line.split(","))
-                    .map(data -> new Person(data[0], data[1], data[2], data[3]))
+                    .map(data -> new Person(data[0], data[1], data[2], data[3], data[1], data[5]))
                     .collect(Collectors.toList());
             for (Person person : employees) {
                 person.setId(idCounter++);

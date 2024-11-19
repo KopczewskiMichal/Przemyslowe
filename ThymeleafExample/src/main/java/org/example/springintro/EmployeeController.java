@@ -41,10 +41,6 @@ public class EmployeeController {
         return isDeleted ? "Employee deleted successfully" : "Employee not found";
     }
 
-    @GetMapping("/filter")
-    public List<Person> filterEmployeesByCompany(@RequestParam String company) {
-        return employeeManagementService.filterByCompany(company);
-    }
 
     @GetMapping("/sort")
     public List<Person> sortEmployeesByLastName() {
