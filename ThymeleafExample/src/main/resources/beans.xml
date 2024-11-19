@@ -8,21 +8,27 @@
         <constructor-arg value="Chrystal"/>
         <constructor-arg value="Havoc"/>
         <constructor-arg value="chavocr@yahoo.com"/>
-        <constructor-arg value="Mymm"/>
+        <constructor-arg value="30000.00"/>
+        <constructor-arg value="USD"/>
+        <constructor-arg value="Poland"/>
     </bean>
 
     <bean id="vicePresident" class="org.example.springintro.Person">
         <constructor-arg value="Halley"/>
         <constructor-arg value="Gadaud"/>
         <constructor-arg value="hgadaud9@sohu.com"/>
-        <constructor-arg value="Oyope"/>
+        <constructor-arg value="15000.00"/>
+        <constructor-arg value="USD"/>
+        <constructor-arg value="Poland"/>
     </bean>
 
     <bean id="secretary" class="org.example.springintro.Person">
         <constructor-arg value="Kirbie"/>
         <constructor-arg value="Wrettum"/>
         <constructor-arg value="kwrettumj@slideshare.net"/>
-        <constructor-arg value="Browsetype"/>
+        <constructor-arg value="10000.00"/>
+        <constructor-arg value="USD"/>
+        <constructor-arg value="Poland"/>
     </bean>
 
 </beans>

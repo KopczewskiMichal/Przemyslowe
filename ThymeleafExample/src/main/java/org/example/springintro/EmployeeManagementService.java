@@ -40,7 +40,6 @@ public class EmployeeManagementService {
         return employees.removeIf(employee -> employee.getId() == id);
     }
 
-
     public List<Person> sortByLastName() {
         return employees.stream()
                 .sorted((p1, p2) -> p1.getLastName().compareToIgnoreCase(p2.getLastName()))
