@@ -53,4 +53,8 @@ public class EmployeeManagementService {
                 .orElseThrow(() -> new IllegalArgumentException("Employee with ID " + id + " not found."));
     }
 
+    public int getEmployeesCount() {
+        return employees.size();
+    }
+
 }
