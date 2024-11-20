@@ -23,6 +23,9 @@
 
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" th:value="*{email}" required />
+    <div th:if="${emailError != null}" style="color: red;">
+        <span th:text="${emailError}"></span>
+    </div>
     <br />
 
     <label for="salary">Salary:</label>
@@ -43,7 +46,7 @@
     <br />
 
     <button type="submit">Submit</button>
-    <a th:href="@{/employees}">Return to main page</a>
+    <a th:href="@{/}">Return to main page</a>
 </form>
 </body>
 </html>

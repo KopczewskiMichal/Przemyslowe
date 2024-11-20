@@ -48,23 +48,22 @@ public class ThymeleafController {
         } else {
             person = employeeManagementService.getEmployeeById(id);  // Edytowanie istniejącego
         }
-        person.validateFields();  // Weryfikacja pól (zakładając, że masz taką metodę)
         model.addAttribute("person", person);
         return "employeeForm";
     }
 
-
-
-
-
     @PostMapping("/save-employee")
-    public String saveEmployee(@ModelAttribute Person person) {
-        person.validateFields();
-        if (person.getId() == 0) {
-            employeeManagementService.saveOrUpdateEmployee(person);
-        } else {
-            employeeManagementService.saveOrUpdateEmployee(person);
+    public String saveEmployee(Person person, Model model) {
+        // Sprawdź, czy email jest już w systemie
+        if (! employeeManagementService.isEmailAlreadyTaken(person.getEmail())) {
+            model.addAttribute("emailError", "Email is already taken");
+            model.addAttribute("person", person);
+            return "employeeForm";
         }
+
+        employeeManagementService.saveOrUpdateEmployee(person);
+
+        // Po zapisaniu, przekieruj do listy pracowników
         return "redirect:/";
     }
 

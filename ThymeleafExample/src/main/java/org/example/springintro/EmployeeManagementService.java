@@ -91,6 +91,10 @@ public class EmployeeManagementService {
         }
     }
 
+    public boolean isEmailAlreadyTaken(String email) {
+        return employees.stream().anyMatch(person -> person.getEmail() == email);
+    }
+
 
 }
 
