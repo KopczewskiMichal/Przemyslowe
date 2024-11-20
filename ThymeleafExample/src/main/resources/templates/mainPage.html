@@ -32,8 +32,13 @@
 </table>
 
 <h2>Employees</h2>
-<table border="1">
-  </thead><thead>
+<select id="countryFilter">
+  <option value="">All</option>
+  <option th:each="country : ${countries}" th:value="${country}" th:text="${country}"></option>
+</select>
+
+<table id="employeeTable" border="1">
+  <thead>
   <tr>
     <th>ID</th>
     <th>Name</th>
@@ -46,7 +51,7 @@
   </thead>
   <tbody>
   <!-- Tabela pracowników -->
-  <tr th:each="employee : ${employees}">
+  <tr th:each="employee : ${employees}" class="employeeRow" th:data-country="${employee.country}">
     <td th:text="${employee.id}">ID</td>
     <td th:text="${employee.firstName}">First Name</td>
     <td th:text="${employee.lastName}">Last Name</td>
@@ -56,7 +61,22 @@
     <td th:text="${employee.country}">Country</td>
   </tr>
   </tbody>
-
 </table>
+
+<script>
+  document.getElementById('countryFilter').addEventListener('change', function() {
+    var selectedCountry = this.value; // Wybrany kraj
+    var rows = document.querySelectorAll('#employeeTable .employeeRow'); // Wiersze w tabeli
+
+    rows.forEach(function(row) {
+      var rowCountry = row.getAttribute('data-country'); // Kraj z atrybutu data-country
+      if (selectedCountry === "" || rowCountry === selectedCountry) {
+        row.style.display = ''; // Pokaż wiersz
+      } else {
+        row.style.display = 'none'; // Ukryj wiersz
+      }
+    });
+  });
+</script>
 </body>
 </html>

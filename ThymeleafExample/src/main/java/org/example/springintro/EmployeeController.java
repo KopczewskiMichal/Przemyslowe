@@ -10,10 +10,10 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeManagementService employeeManagementService;
-    private final EmployeeService employeeService;
+    private final KeyEmployeeService employeeService;
 
     @Autowired
-    public EmployeeController(EmployeeManagementService employeeManagementService, EmployeeService employeeService) {
+    public EmployeeController(EmployeeManagementService employeeManagementService, KeyEmployeeService employeeService) {
         this.employeeManagementService = employeeManagementService;
         this.employeeService = employeeService;
     }

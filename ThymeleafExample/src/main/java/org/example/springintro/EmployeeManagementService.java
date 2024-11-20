@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,4 +58,9 @@ public class EmployeeManagementService {
         return employees.size();
     }
 
+    public Set<String> getDistrictCountries() {
+        return employees.stream()
+                .map(Person::getCountry)
+                .collect(Collectors.toSet());
+    }
 }

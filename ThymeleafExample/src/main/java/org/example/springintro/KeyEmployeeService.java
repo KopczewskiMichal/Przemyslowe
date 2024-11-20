@@ -5,16 +5,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EmployeeService {
+public class KeyEmployeeService {
 
     private final Person president;
     private final Person vicePresident;
     private final Person secretary;
 
     @Autowired
-    public EmployeeService(@Qualifier("president") Person president,
-                           @Qualifier("vicePresident") Person vicePresident,
-                           @Qualifier("secretary") Person secretary) {
+    public KeyEmployeeService(@Qualifier("president") Person president,
+                              @Qualifier("vicePresident") Person vicePresident,
+                              @Qualifier("secretary") Person secretary) {
         this.president = president;
         this.vicePresident = vicePresident;
         this.secretary = secretary;
