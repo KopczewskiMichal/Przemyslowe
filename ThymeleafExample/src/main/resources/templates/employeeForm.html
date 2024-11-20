@@ -4,6 +4,8 @@
     <title>Employee Form</title>
 </head>
 <body>
+<div th:replace="~{fragments :: header(${totalEmployees})}"></div>
+
 <h1 th:text="${person.id == 0 ? 'Add New Employee' : 'Edit Employee'}"></h1>
 
 <div th:if="${errorMessage}" style="color: red;">
@@ -65,5 +67,6 @@
     <button type="submit">Submit</button>
     <a th:href="@{/}">Return to main page</a>
 </form>
+<div th:replace="~{fragments :: footer}"></div>
 </body>
 </html>
