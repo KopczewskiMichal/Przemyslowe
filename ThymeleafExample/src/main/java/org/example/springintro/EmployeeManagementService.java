@@ -83,7 +83,7 @@ public class EmployeeManagementService {
     }
 
     public void saveOrUpdateEmployee(Person person) {
-        
+
         if (person.getId() == 0) {
             person.setId(this.getNextId());
             employees.add(person);
@@ -93,8 +93,10 @@ public class EmployeeManagementService {
     }
 
     public boolean isEmailAlreadyTaken(String email, int id) {
-        return employees.stream().anyMatch(person -> person.getEmail() == email || person.getId() != id);
+        return employees.stream()
+                .anyMatch(person -> person.getEmail().strip().equals(email.strip()));
     }
+
 
 
 }
