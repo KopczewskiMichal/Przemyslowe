@@ -18,6 +18,9 @@ public class Person {
         this.country = country;
     }
 
+    public Person() {
+    }
+
     public int getId() {
         return Id;
     }
@@ -91,6 +94,27 @@ public class Person {
                 this.getCurrency(),
                 this.getCountry()
         };
+    }
+
+    public void validateFields() {
+        if (firstName == null || firstName.trim().isEmpty()) {
+            throw new IllegalArgumentException("First name cannot be empty");
+        }
+        if (lastName == null || lastName.trim().isEmpty()) {
+            throw new IllegalArgumentException("Last name cannot be empty");
+        }
+        if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be empty");
+        }
+        if (salary <= 0) {
+            throw new IllegalArgumentException("Salary must be greater than 0");
+        }
+        if (currency == null || currency.trim().isEmpty()) {
+            throw new IllegalArgumentException("Currency cannot be empty");
+        }
+        if (country == null || country.trim().isEmpty()) {
+            throw new IllegalArgumentException("Country cannot be empty");
+        }
     }
 
 }

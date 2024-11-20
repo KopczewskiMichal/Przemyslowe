@@ -77,5 +77,19 @@ public class EmployeeManagementService {
         }
         return salaryByCurrency;
         }
+
+    private int getNextId() {
+        return this.employees.get(this.employees.size() - 1).getId() + 1;
+    }
+
+    public void saveOrUpdateEmployee(Person person) {
+        if (person.getId() == 0) {
+            person.setId(this.getNextId());
+            employees.add(person);
+        } else {
+            employees.replaceAll(e -> e.getId() == person.getId() ? person : e);
+        }
+    }
+
 }
 
