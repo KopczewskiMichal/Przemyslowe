@@ -71,13 +71,17 @@ public class ThymeleafController {
             model.addAttribute("lastNameError", "Last name must be between 2 and 50 characters and contain only letters and hyphens.");
         }
 
+        if (this.employeeManagementService.isEmailAlreadyTaken(person.getEmail(), person.getId())) {
+            model.addAttribute("emailError", "Email is already taken.");
+        }
+
         if (person.getSalary() <= 0 || person.getSalary() > 1000000) {
             model.addAttribute("salaryError", "Salary must be a positive number less than 1,000,000.");
         }
 
         if (model.containsAttribute("firstNameError") || model.containsAttribute("lastNameError") ||
                 model.containsAttribute("salaryError") || model.containsAttribute("currencyError") ||
-                model.containsAttribute("countryError")) {
+                model.containsAttribute("countryError") || model.containsAttribute("emailError")) {
             return "employeeForm";
         }
 
