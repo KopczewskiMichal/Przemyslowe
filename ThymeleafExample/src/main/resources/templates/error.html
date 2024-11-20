@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .error {
+            color: #d9534f;
+            font-size: 24px;
+        }
+        .details {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #5a5a5a;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #0275d8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1 class="error">Something went wrong!</h1>
+<p class="details">We encountered an error while processing your request.</p>
+<p class="details" th:text="'Error code: ' + ${status}"></p>
+<p class="details" th:text="'Message: ' + ${error}"></p>
+<p class="details" th:if="${timestamp}" th:text="'Timestamp: ' + ${timestamp}"></p>
+<a href="/">Return to the home page</a>
+
+<div th:replace="~{fragments :: footer}"></div>
+
+</body>
+</html>
