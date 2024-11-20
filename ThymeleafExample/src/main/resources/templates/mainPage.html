@@ -47,7 +47,7 @@
   </tbody>
 </table>
 
-<a th:href="@{/employee-form}">Formularz</a>
+<a th:href="@{/employee-form/0}">Formularz</a>
 
 <h2>Employees</h2>
 <select id="countryFilter">
@@ -65,11 +65,10 @@
     <th>Salary</th>
     <th>Currency</th>
     <th>Country</th>
-    <th>Actions</th> <!-- Nowa kolumna na przyciski -->
+    <th>Actions</th>
   </tr>
   </thead>
   <tbody>
-  <!-- Tabela pracowników -->
   <tr th:each="employee : ${employees}" class="employeeRow" th:data-country="${employee.country}">
     <td th:text="${employee.id}">ID</td>
     <td th:text="${employee.firstName}">First Name</td>
@@ -82,7 +81,7 @@
     <td th:text="${employee.country}">Country</td>
 
     <td>
-      <a th:href="@{/edit-employee/{id}(id=${employee.id})}" class="btn btn-primary">Edit</a>
+      <a th:href="@{/employee-form/{id}(id=${employee.id})}" class="btn btn-primary">Edit</a>
 
       <form th:action="@{/delete-employee/{id}(id=${employee.id})}" method="post" style="display:inline;">
         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this employee?');">Delete</button>

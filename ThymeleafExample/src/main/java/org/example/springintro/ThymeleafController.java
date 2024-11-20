@@ -40,24 +40,32 @@ public class ThymeleafController {
         return "employeeDetails";
     }
 
-    @GetMapping("/employee-form")
-    public String showEmployeeForm(@RequestParam(required = false, defaultValue = "0") int id, Model model) {
-        Person person = id == 0 ? new Person() : employeeManagementService.getEmployeeById(id);
+    @GetMapping("/employee-form/{id}")
+    public String showEmployeeForm(Model model, @PathVariable int id) {
+        Person person;
+        if (id == 0) {
+            person = new Person();  // Nowy pracownik
+        } else {
+            person = employeeManagementService.getEmployeeById(id);  // Edytowanie istniejącego
+        }
+        person.validateFields();  // Weryfikacja pól (zakładając, że masz taką metodę)
         model.addAttribute("person", person);
         return "employeeForm";
     }
 
+
+
+
+
     @PostMapping("/save-employee")
-    public String saveEmployee(@ModelAttribute Person person, Model model) {
-        try {
-            person.validateFields();
+    public String saveEmployee(@ModelAttribute Person person) {
+        person.validateFields();
+        if (person.getId() == 0) {
             employeeManagementService.saveOrUpdateEmployee(person);
-            return "redirect:/";
-        } catch (IllegalArgumentException e) {
-            model.addAttribute("errorMessage", e.getMessage());
-            model.addAttribute("person", person);
-            return "employeeForm";
+        } else {
+            employeeManagementService.saveOrUpdateEmployee(person);
         }
+        return "redirect:/";
     }
 
     @PostMapping("/delete-employee/{id}")
