@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="header(totalEmployees)">
+  <header>
+    <h1>Welcome on Main Page</h1>
+    <p>Total Employees: <span th:text="${totalEmployees}"></span></p>
+  </header>
+</div>
+
+<div th:fragment="footer">
+  <footer>
+    <p>&copy; 2024 Kopczewski Michał</p>
+  </footer>
+</div>
+</body>
+</html>

@@ -4,8 +4,8 @@
   <title>MainPage</title>
 </head>
 <body>
-<h1>Welcome on Main Page</h1>
-<p>Total Employees: <span th:text="${totalEmployees}"></span></p>
+
+<div th:replace="~{fragments :: header(${totalEmployees})}"></div>
 
 <h2>Key employees</h2>
 <table border="1">
@@ -78,6 +78,8 @@
   </tr>
   </tbody>
 </table>
+
+<div th:replace="~{fragments :: footer}"></div>
 
 <script>
   document.getElementById('countryFilter').addEventListener('change', function() {
