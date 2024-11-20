@@ -45,9 +45,9 @@ public class ThymeleafController {
         model.addAttribute("totalEmployees", this.employeeManagementService.getEmployeesCount() + 3); // 3 pracowników kluczowych
         Person person;
         if (id == 0) {
-            person = new Person();  // Nowy pracownik
+            person = new Person();
         } else {
-            person = employeeManagementService.getEmployeeById(id);  // Edytowanie istniejącego
+            person = employeeManagementService.getEmployeeById(id);
         }
         model.addAttribute("person", person);
         Set<String> countries = employeeManagementService.getDistrictCountries();
@@ -71,10 +71,10 @@ public class ThymeleafController {
             model.addAttribute("lastNameError", "Last name must be between 2 and 50 characters and contain only letters and hyphens.");
         }
 
-        if (this.employeeManagementService.isEmailAlreadyTaken(person.getEmail(), person.getId())) {
-            model.addAttribute("emailError", "Email is already taken.");
+        String email = person.getEmail();
+        if (email == null || !email.contains("@") || this.employeeManagementService.isEmailAlreadyTaken(email, person.getId())) {
+            model.addAttribute("emailError", "Email is invalid or taken.");
         }
-
         if (person.getSalary() <= 0 || person.getSalary() > 1000000) {
             model.addAttribute("salaryError", "Salary must be a positive number less than 1,000,000.");
         }
