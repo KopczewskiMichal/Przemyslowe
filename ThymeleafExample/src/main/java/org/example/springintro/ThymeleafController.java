@@ -32,6 +32,7 @@ public class ThymeleafController {
     public String mainPage(Model model) {
         model.addAttribute("totalEmployees", this.employeeManagementService.getEmployeesCount() + 3); // 3 pracowników kluczowych
         model.addAttribute("keyEmployees", this.employeeService.getKeyEmployees());
+        model.addAttribute("salaryByCurrency", employeeManagementService.salaryByCurrency());
 
         Set<String> countries = employeeManagementService.getDistrictCountries();
         model.addAttribute("employees", this.employeeManagementService.getEmployees());

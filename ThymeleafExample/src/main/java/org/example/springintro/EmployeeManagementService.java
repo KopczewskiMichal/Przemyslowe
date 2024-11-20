@@ -3,7 +3,9 @@ package org.example.springintro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -63,4 +65,17 @@ public class EmployeeManagementService {
                 .map(Person::getCountry)
                 .collect(Collectors.toSet());
     }
+
+    public Map<String, Double> salaryByCurrency() {
+        Map<String, Double> salaryByCurrency = new HashMap<>();
+
+        for (Person employee : employees) {
+            String currency = employee.getCurrency();
+            double salary = employee.getSalary();
+
+            salaryByCurrency.put(currency, salaryByCurrency.getOrDefault(currency, 0.0) + salary);
+        }
+        return salaryByCurrency;
+        }
 }
+

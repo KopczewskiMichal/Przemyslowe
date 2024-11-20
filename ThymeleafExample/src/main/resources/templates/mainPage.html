@@ -31,6 +31,22 @@
   </tbody>
 </table>
 
+<h2>Salaries by Currency</h2>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Currency</th>
+    <th>Total Salary</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="entry : ${salaryByCurrency}">
+    <td th:text="${entry.key}">Currency</td>
+    <td id="salary-${entry.key}" th:text="${entry.value}">Total Salary</td>
+  </tr>
+  </tbody>
+</table>
+
 <h2>Employees</h2>
 <select id="countryFilter">
   <option value="">All</option>
@@ -65,17 +81,24 @@
 
 <script>
   document.getElementById('countryFilter').addEventListener('change', function() {
-    var selectedCountry = this.value; // Wybrany kraj
-    var rows = document.querySelectorAll('#employeeTable .employeeRow'); // Wiersze w tabeli
+    var selectedCountry = this.value;
+    var rows = document.querySelectorAll('#employeeTable .employeeRow');
 
     rows.forEach(function(row) {
-      var rowCountry = row.getAttribute('data-country'); // Kraj z atrybutu data-country
+      var rowCountry = row.getAttribute('data-country');
       if (selectedCountry === "" || rowCountry === selectedCountry) {
-        row.style.display = ''; // Pokaż wiersz
+        row.style.display = '';
       } else {
-        row.style.display = 'none'; // Ukryj wiersz
+        row.style.display = 'none';
       }
     });
+  });
+</script>
+
+<script>
+  document.querySelectorAll('[id^="salary-"]').forEach(function(cell) {
+    var salary = parseFloat(cell.innerText);
+    cell.innerText = salary.toLocaleString();
   });
 </script>
 </body>
