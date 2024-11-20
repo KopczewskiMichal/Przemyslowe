@@ -91,8 +91,8 @@ public class EmployeeManagementService {
         }
     }
 
-    public boolean isEmailAlreadyTaken(String email) {
-        return employees.stream().anyMatch(person -> person.getEmail() == email);
+    public boolean isEmailAlreadyTaken(String email, int id) {
+        return employees.stream().anyMatch(person -> person.getEmail() == email || person.getId() != id);
     }
 
 

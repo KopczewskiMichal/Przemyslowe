@@ -6,19 +6,25 @@
 <body>
 <h1 th:text="${person.id == 0 ? 'Add New Employee' : 'Edit Employee'}"></h1>
 
-    <div th:if="${errorMessage}" style="color: red;">
-        <p th:text="${errorMessage}"></p>
-    </div>
+<div th:if="${errorMessage}" style="color: red;">
+    <h2 th:text="${errorMessage}"></h2>
+</div>
+
 <form th:action="@{/save-employee}" th:object="${person}" method="post">
     <input type="hidden" name="id" th:value="*{id}" />
 
-
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" th:value="*{firstName}" required />
+    <div th:if="${firstNameError != null}" style="color: red;">
+        <span th:text="${firstNameError}"></span>
+    </div>
     <br />
 
     <label for="lastName">Last Name:</label>
     <input type="text" id="lastName" name="lastName" th:value="*{lastName}" required />
+    <div th:if="${lastNameError != null}" style="color: red;">
+        <span th:text="${lastNameError}"></span>
+    </div>
     <br />
 
     <label for="email">Email:</label>
@@ -30,6 +36,9 @@
 
     <label for="salary">Salary:</label>
     <input type="number" id="salary" name="salary" th:value="*{salary}" step="0.01" required />
+    <div th:if="${salaryError != null}" style="color: red;">
+        <span th:text="${salaryError}"></span>
+    </div>
     <br />
 
     <label for="currency">Currency:</label>
@@ -39,10 +48,18 @@
         <option value="JPY">JPY</option>
         <option value="PLN">PLN</option>
     </select>
+    <div th:if="${currencyError != null}" style="color: red;">
+        <span th:text="${currencyError}"></span>
+    </div>
     <br />
 
     <label for="country">Country:</label>
-    <input type="text" id="country" name="country" th:value="*{country}" required />
+    <select id="country" name="country" th:value="*{country}" required>
+        <option th:each="country : ${countries}" th:value="${country}" th:text="${country}"></option>
+    </select>
+    <div th:if="${countryError != null}" style="color: red;">
+        <span th:text="${countryError}"></span>
+    </div>
     <br />
 
     <button type="submit">Submit</button>
