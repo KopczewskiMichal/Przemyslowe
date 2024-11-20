@@ -60,4 +60,12 @@ public class ThymeleafController {
         }
     }
 
+    @PostMapping("/delete-employee/{id}")
+    public String deleteEmployee(@PathVariable int id) {
+        employeeManagementService.deleteEmployee(id);
+        return "redirect:/";
+    }
+
+
+
 }
