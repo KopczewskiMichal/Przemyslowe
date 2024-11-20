@@ -45,4 +45,12 @@ public class EmployeeManagementService {
                 .sorted((p1, p2) -> p1.getLastName().compareToIgnoreCase(p2.getLastName()))
                 .collect(Collectors.toList());
     }
+
+    public Person getEmployeeById(int id) {
+        return employees.stream()
+                .filter(employee -> employee.getId() == id)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Employee with ID " + id + " not found."));
+    }
+
 }

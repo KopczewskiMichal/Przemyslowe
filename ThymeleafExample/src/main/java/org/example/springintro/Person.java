@@ -81,4 +81,16 @@ public class Person {
                 Id, firstName, lastName, email, salary, currency, country);
     }
 
+    public String[] toStringArray() {
+        return new String[] {
+                String.valueOf(this.getId()),
+                this.getFirstName(),
+                this.getLastName(),
+                this.getEmail(),
+                String.valueOf(this.getSalary()),
+                this.getCurrency(),
+                this.getCountry()
+        };
+    }
+
 }

@@ -1,17 +1,61 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Employees</title>
+  <title>MainPage</title>
 </head>
 <body>
-<h1>Employees</h1>
+<h1>Welcome on Main Page</h1>
+
+<h2>Key employees</h2>
 <table border="1">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Email</th>
+    <th>Salary</th>
+    <th>Currency</th>
+    <th>Country</th>
+  </tr>
   <tbody>
-<!--  Tabela pracowników-->
-  <tr th:each="row : ${employees}">
-    <td th:each="cell : ${row}" th:text="${cell}">Dane</td>
+  <tr th:each="employee : ${keyEmployees}">
+    <td th:text="${employee.firstName}">First Name</td>
+    <td th:text="${employee.lastName}">Last Name</td>
+    <td th:text="${employee.email}">Email</td>
+    <td th:text="${employee.salary}">Salary</td>
+    <td th:text="${employee.currency}">Currency</td>
+    <td th:text="${employee.country}">Country</td>
+  </tr>
+
+  </tbody>
+</table>
+
+<h2>Employees</h2>
+<table border="1">
+  </thead><thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Email</th>
+    <th>Salary</th>
+    <th>Currency</th>
+    <th>Country</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Tabela pracowników -->
+  <tr th:each="employee : ${employees}">
+    <td th:text="${employee.id}">ID</td>
+    <td th:text="${employee.firstName}">First Name</td>
+    <td th:text="${employee.lastName}">Last Name</td>
+    <td><a th:href="@{/employee-by-id/{id}(id=${employee.id})}" th:text="${employee.email}">Email</a></td>
+    <td th:text="${employee.salary}">Salary</td>
+    <td th:text="${employee.currency}">Currency</td>
+    <td th:text="${employee.country}">Country</td>
   </tr>
   </tbody>
+
 </table>
 </body>
 </html>
